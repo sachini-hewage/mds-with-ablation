@@ -1,0 +1,9 @@
+spacy~=3.8.7
+fastcoref~=2.1.6
+numpy~=2.3.1
+sentence-transformers~=4.1.0
+datasets~=3.6.0
+scipy~=1.16.0
+hdbscan~=0.8.40
+scikit-learn~=1.7.0
+PyYAML~=6.0.2

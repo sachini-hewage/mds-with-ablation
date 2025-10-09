@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# IDE (PyCharm)
+.idea/
+*.iml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+*.egg-info/
