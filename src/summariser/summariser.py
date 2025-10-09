@@ -10,7 +10,7 @@ from src.summariser.prompt_templates import (
 
 class Summariser:
     """
-    Summariser class to generate summaries using an Ollama LLM.
+    Summariser class to generate summaries using an Ollama LLM from configuration.
 
     Supports three summarization methods:
       1. pairing
