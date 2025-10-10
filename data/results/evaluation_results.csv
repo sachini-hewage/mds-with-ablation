@@ -1,4 +1,4 @@
 ablation_type,method,coverage,overlap,importance_retention
-baseline,summary_pairing,0.782608687877655,0.3905,0.6
-coref+ner,summary_pairing,0.6086956262588501,0.5455,0.6
-coref,summary_pairing,0.739130437374115,0.3,0.8
+baseline,summary_pairing,0.695652186870575,0.3676,0.9
+coref+ner,summary_pairing,0.6086956262588501,0.2778,0.7
+coref,summary_pairing,0.6304348111152649,0.3929,0.5

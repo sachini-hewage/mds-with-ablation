@@ -1,17 +1,17 @@
 {
     "baseline_summary_pairing": {
-        "coverage": 0.782608687877655,
-        "overlap": 0.3905,
-        "importance_retention": 0.6
+        "coverage": 0.695652186870575,
+        "overlap": 0.3676,
+        "importance_retention": 0.9
     },
     "coref+ner_summary_pairing": {
         "coverage": 0.6086956262588501,
-        "overlap": 0.5455,
-        "importance_retention": 0.6
+        "overlap": 0.2778,
+        "importance_retention": 0.7
     },
     "coref_summary_pairing": {
-        "coverage": 0.739130437374115,
-        "overlap": 0.3,
-        "importance_retention": 0.8
+        "coverage": 0.6304348111152649,
+        "overlap": 0.3929,
+        "importance_retention": 0.5
     }
 }

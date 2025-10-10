@@ -72,7 +72,7 @@ agglomerative:
 # ==========================
 summarisation:
     enabled: true
-    ollama_model: "qwen3:14b"               # Ollama model
+    ollama_model: "qwen3:14b"               # Ollama model ===TO DO
     temperature: 0.0
     output_dir: "data/summaries"
     overwrite_existing: true         # (optional) overwrite summaries if they exist
