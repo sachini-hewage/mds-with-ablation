@@ -4,61 +4,78 @@
       "doc_id": "doc1",
       "para_id": 0,
       "metadata_tag": "doc1_0",
-      "text": "Shelly Sterling<PERSON_2> said today<DATE_4> that \"eventually, Shelly Sterling<PERSON_2>  is going to\" divorce Shelly Sterling's<ORG_3> estranged husband, Donald Sterling<PERSON_1>, and if the NBA<ORG_4> tries to force Shelly Sterling<PERSON_2> to sell Shelly Sterling's<ORG_3> half<CARDINAL_1> of the Los Angeles Clippers<ORG_2>, Shelly Sterling<PERSON_2> would \"absolutely\" fight to keep Shelly Sterling's<ORG_3> stake in the team."
+      "text": "Shelly Sterling said today that \"eventually, I am going to\" divorce her estranged husband, Donald Sterling, and if the NBA tries to force her to sell her half of the Los Angeles Clippers, she would \"absolutely\" fight to keep her stake in the team."
     },
     "counterpart": {
       "metadata_tag": "doc0_0",
-      "text": "LOS ANGELES<GPE_1> (AP<ORG_1>) — In Shelly Sterling's<ORG_3> first<ORDINAL_1> interview since the NBA<ORG_4> banned Shelly Sterling's<ORG_3> estranged husband, Shelly Sterling<PERSON_2> says Shelly Sterling<PERSON_2> will fight to keep Shelly Sterling<PERSON_2>'s share of the Los Angeles Clippers<ORG_2> and plans one day<DATE_1> to divorce Donald Sterling<PERSON_1>."
+      "text": "LOS ANGELES (AP) — In her first interview since the NBA banned her estranged husband, Shelly Sterling says she will fight to keep her share of the Los Angeles Clippers and plans one day to divorce Donald Sterling."
     },
-    "aux": []
+    "aux": [
+      {
+        "metadata_tag": "doc1_7",
+        "text": "An NBA spokesman said this evening that league rules would not allow her tol hold on to her share."
+      },
+      {
+        "metadata_tag": "doc1_10",
+        "text": "\"We do not agree with the league's self-serving interpretation of its constitution, its application to Shelly Sterling or its validity under these unique circumstances,\" O'Donnell said in a statement released this evening in reposnse the NBA. \"We live in a nation of laws. California law and the United States Constitution trump any such interpretation.\""
+      },
+      {
+        "metadata_tag": "doc1_11",
+        "text": "If the league decides to force Donald Sterling to sell his half of the team, Shelly Sterling doesn't know what he will do, but the possibility of him transferring full ownership to her is something she \"would love him to\" consider."
+      },
+      {
+        "metadata_tag": "doc1_13",
+        "text": "\"I haven't discussed it with him or talked to him about it,\" she said."
+      },
+      {
+        "metadata_tag": "doc1_14",
+        "text": "The lack of communication between Rochelle and Donald Sterling led Walters to question whether she plans to file for divorce."
+      },
+      {
+        "metadata_tag": "doc1_15",
+        "text": "\"For the last 20 years, I've been seeing attorneys for a divorce,\" she said, laughing. \"In fact, I have here-- I just filed-- I was going to file the petition. I signed the petition for a divorce. And it came to almost being filed. And then, my financial advisor and my attorney said to me, 'Not now.'\""
+      },
+      {
+        "metadata_tag": "doc1_16",
+        "text": "Sterling added that she thinks the stalling of the divorce stems from \"financial arrangements.\""
+      },
+      {
+        "metadata_tag": "doc1_17",
+        "text": "But she said \"Eventually, I'm going to.\""
+      },
+      {
+        "metadata_tag": "doc1_18",
+        "text": "She also told Walters she thinks her estranged husband is suffering from \"the onset of dementia.\""
+      },
+      {
+        "metadata_tag": "doc1_19",
+        "text": "Since Donald Sterling's ban, several celebrities have said they would be willing to buy the team from Sterling, including Oprah Winfrey and Magic Johnson. Sterling remains the owner, though his ban means he can have nothing to do with running the team and can't attend any games."
+      },
+      {
+        "metadata_tag": "doc1_20",
+        "text": "Silver announced Friday that former Citigroup chairman and former Time Warner chairman Richard Parsons has been named interim CEO of the team, but nothing concrete in terms of ownership or whether Sterling will be forced to sell the team. Parsons will now take over the basic daily operations for the team and oversee the team's president."
+      },
+      {
+        "metadata_tag": "doc1_21",
+        "text": "ABC News contacted Donald Sterling for comment on his wife's interview, but he declined."
+      }
+    ]
   },
   {
     "base": {
       "doc_id": "doc1",
       "para_id": 1,
       "metadata_tag": "doc1_1",
-      "text": "\"Shelly Sterling<PERSON_2> will fight that decision,\" Shelly Sterling<PERSON_2> told ABC News'<ORG_9> Barbara Walters<PERSON_4> today<DATE_4> in an exclusive interview. \"To be honest with Barbara Walters<PERSON_4>, Shelly Sterling<PERSON_2> is wondering if a wife of one<CARDINAL_3> of the owners, and there's 30<CARDINAL_2> owners, did something like that, said those racial slurs, would the owners oust the husband? Or would the owners leave the husband in?\""
+      "text": "\"I will fight that decision,\" she told ABC News' Barbara Walters today in an exclusive interview. \"To be honest with you, I'm wondering if a wife of one of the owners, and there's 30 owners, did something like that, said those racial slurs, would they oust the husband? Or would they leave the husband in?\""
     },
     "counterpart": {
       "metadata_tag": "doc0_1",
-      "text": "Los Angeles Clippers<ORG_5> co-owner Shelly Sterling<PERSON_2>, below, watches the Clippers<PRODUCT_1> play the Oklahoma City<GPE_2> Thunder along with Shelly Sterling's<ORG_3> attorney, Pierce O'Donnell<PERSON_3>, in the first half of Game 3<DATE_2> of the Western Conference... (Associated Press)"
+      "text": "Los Angeles Clippers co-owner Shelly Sterling, below, watches the Clippers play the Oklahoma City Thunder along with her attorney, Pierce O'Donnell, in the first half of Game 3 of the Western Conference... (Associated Press)"
     },
     "aux": [
       {
-        "metadata_tag": "doc1_8",
-        "text": "\"Under the NBA Constitution<LAW_1>, if a controlling owner's interest is terminated by a 3/4<CARDINAL_4> vote, all other team owners' interests are automatically terminated as well,\" NBA<ORG_4> spokesman Mike Bass<PERSON_7> said. \"It doesn't matter whether the owners are related as is the case here. These are the rules to which all NBA<ORG_4> owners agreed to as a condition of owning all NBA<ORG_4> owners's team.\""
-      },
-      {
         "metadata_tag": "doc1_9",
-        "text": "Sherry Sterling's<PERSON_8> lawyer, Pierce O'Donnell<PERSON_3>, disputed the league's reading of NBA<ORG_4>'s constitution."
-      },
-      {
-        "metadata_tag": "doc1_10",
-        "text": "\"We do not agree with the league's self-serving interpretation of NBA<ORG_4>'s constitution, NBA Constitution's<ORG_11> application to Shelly Sterling<PERSON_2> or NBA Constitution's<ORG_11> validity under these unique circumstances,\" O'Donnell<ORG_10> said in a statement released this evening<TIME_1> in reposnse the NBA<ORG_4>. \"We live in a nation of laws. California<GPE_3> law and the United States Constitution<ORG_12> trump any such interpretation.\""
-      },
-      {
-        "metadata_tag": "doc1_11",
-        "text": "If the league decides to force Donald Sterling<PERSON_1> to sell her estranged husband, Donald Sterling's<PERSON_6> half<CARDINAL_1> of the team, Shelly Sterling<PERSON_2> doesn't know what her estranged husband, Donald Sterling<PERSON_1> will do, but the possibility of her estranged husband, Donald Sterling<PERSON_1> transferring full ownership to Shelly Sterling<PERSON_2> is something Shelly Sterling<PERSON_2> \"would love her estranged husband, Donald Sterling<PERSON_1> to\" consider."
-      },
-      {
-        "metadata_tag": "doc1_12",
-        "text": "Related: NBA<ORG_4> Bans Clippers Owner Donald Sterling<PERSON_1> For Life"
-      },
-      {
-        "metadata_tag": "doc1_13",
-        "text": "\"Shelly Sterling<PERSON_2>  hasn't discussed it with her estranged husband, Donald Sterling<PERSON_1> or talked to her estranged husband, Donald Sterling<PERSON_1> about it,\" Shelly Sterling<PERSON_2> said."
-      },
-      {
-        "metadata_tag": "doc1_14",
-        "text": "The lack of communication between Rochelle<GPE_4> and Donald Sterling<PERSON_1> led Walters to question whether Shelly Sterling<PERSON_2> plans to file for divorce."
-      },
-      {
-        "metadata_tag": "doc1_15",
-        "text": "\"For the last 20 years<DATE_9>, Shelly Sterling<PERSON_2> has been seeing attorneys for a divorce,\" Shelly Sterling<PERSON_2> said, laughing. \"In fact, Shelly Sterling<PERSON_2>  has here-- Shelly Sterling<ORG_13> just filed-- Shelly Sterling was going to file the petition. Shelly Sterling<PERSON_2> signed the petition for a divorce. And the petition came to almost being filed. And then, Shelly Sterling's<ORG_3> financial advisor and Shelly Sterling's<ORG_3> attorney said to Shelly Sterling<PERSON_2>, 'Not now.'\""
-      },
-      {
-        "metadata_tag": "doc1_20",
-        "text": "Silver announced Friday<DATE_10> that former Citigroup<ORG_16> chairman and former Time Warner<ORG_15> chairman Richard Parsons<PERSON_11> has been named interim CEO of the team, but nothing concrete in terms of ownership or whether Sterling<ORG_7> will be forced to sell the team. Parsons will now take over the basic daily operations for the team and oversee the team's president."
+        "text": "Sherry Sterling's lawyer, Pierce O'Donnell, disputed the league's reading of its constitution."
       }
     ]
   },
@@ -67,11 +84,11 @@
       "doc_id": "doc1",
       "para_id": 2,
       "metadata_tag": "doc1_2",
-      "text": "Sterling added that the Clippers<PRODUCT_1> franchise is Shelly Sterling's<ORG_3> \"passion\" and \"legacy to Shelly Sterling's<ORG_3> family.\""
+      "text": "Sterling added that the Clippers franchise is her \"passion\" and \"legacy to my family.\""
     },
     "counterpart": {
       "metadata_tag": "doc0_2",
-      "text": "Shelly Sterling<PERSON_2> spoke to Barbara Walters<PERSON_4>, and ABC News<ORG_6> posted a short story with excerpts from the conversation Sunday<DATE_3>."
+      "text": "Shelly Sterling spoke to Barbara Walters, and ABC News posted a short story with excerpts from the conversation Sunday."
     },
     "aux": []
   },
@@ -80,67 +97,51 @@
       "doc_id": "doc1",
       "para_id": 3,
       "metadata_tag": "doc1_3",
-      "text": "\"Shelly Sterling<PERSON_2> has been with the team for 33 years<DATE_5>, through the good times and the bad times,\" Shelly Sterling<PERSON_2> added."
+      "text": "\"I've been with the team for 33 years, through the good times and the bad times,\" she added."
     },
     "counterpart": {
       "metadata_tag": "doc0_3",
-      "text": "NBA<ORG_4> Commissioner Adam Silver<PERSON_5> has banned Donald Sterling<PERSON_1> for making racist comments and urged owners to force Sterling<ORG_7> to sell the team. Silver added that no decisions had been made about the rest of Sterling<ORG_7>'s family."
-    },
-    "aux": [
-      {
-        "metadata_tag": "doc1_6",
-        "text": "\"Shelly Sterling<PERSON_2> was shocked by what her estranged husband, Donald Sterling<PERSON_1> said. And -- well, Shelly Sterling<PERSON_2> guess whatever NBA<ORG_4>'s decision is -- we have to live with their decision,\" Shelly Sterling<PERSON_2> said. \"But Shelly Sterling<PERSON_2>  doesn't know why Shelly Sterling<PERSON_2> should be punished for what her estranged husband, Donald Sterling's<PERSON_6> actions were.\""
-      },
-      {
-        "metadata_tag": "doc1_16",
-        "text": "Sterling added that Shelly Sterling<PERSON_2> thinks the stalling of the divorce stems from \"financial arrangements.\""
-      },
-      {
-        "metadata_tag": "doc1_18",
-        "text": "Shelly Sterling<PERSON_2> also told Walters Shelly Sterling<ORG_14> thinks Shelly Sterling's<ORG_3> estranged husband is suffering from \"the onset of dementia.\""
-      }
-    ]
-  },
-  {
-    "base": {
-      "doc_id": "doc1",
-      "para_id": 4,
-      "metadata_tag": "doc1_4",
-      "text": "These comments come nearly two weeks<DATE_8> after NBA<ORG_4> Commissioner Adam Silver<PERSON_5> announced a lifetime ban and a $2.5 million<MONEY_1> fine for Donald Sterling<PERSON_1> on April 29<DATE_7>, following racist comments from the 80-year-old<DATE_6>, which were caught on tape and released to the media."
-    },
-    "counterpart": {
-      "metadata_tag": "doc0_4",
-      "text": "According to ABC<ORG_8>'s story, Shelly Sterling<PERSON_2> told Walters: \"Shelly Sterling<PERSON_2> will fight that decision.\""
+      "text": "NBA Commissioner Adam Silver has banned Donald Sterling for making racist comments and urged owners to force Sterling to sell the team. Silver added that no decisions had been made about the rest of Sterling's family."
     },
     "aux": []
   },
   {
     "base": {
       "doc_id": "doc1",
-      "para_id": 5,
-      "metadata_tag": "doc1_5",
-      "text": "Being estranged from Shelly Sterling's<ORG_3> husband, Shelly Sterling<PERSON_2> said Shelly Sterling<PERSON_2> would \"have to accept\" whatever punishment the NBA<ORG_4> handed down to her estranged husband, Donald Sterling<PERSON_1>, but that Shelly Sterling's<ORG_3> stake in the team should be separate."
+      "para_id": 4,
+      "metadata_tag": "doc1_4",
+      "text": "These comments come nearly two weeks after NBA Commissioner Adam Silver announced a lifetime ban and a $2.5 million fine for Donald Sterling on April 29, following racist comments from the 80-year-old, which were caught on tape and released to the media."
     },
     "counterpart": {
-      "metadata_tag": "doc0_5",
-      "text": "Sterling<ORG_7> also said that Shelly Sterling<PERSON_2> \"eventually\" will divorce Shelly Sterling's<ORG_3> husband, and that Shelly Sterling<PERSON_2> hadn't yet done so due to financial considerations."
+      "metadata_tag": "doc0_4",
+      "text": "According to ABC's story, Shelly Sterling told Walters: \"I will fight that decision.\""
     },
     "aux": [
       {
-        "metadata_tag": "doc1_7",
-        "text": "An NBA<ORG_4> spokesman said this evening<TIME_1> that league rules would not allow Shelly Sterling's<ORG_3> tol hold on to Shelly Sterling's<ORG_3> share."
+        "metadata_tag": "doc1_12",
+        "text": "Related: NBA Bans Clippers Owner Donald Sterling For Life"
+      }
+    ]
+  },
+  {
+    "base": {
+      "doc_id": "doc1",
+      "para_id": 5,
+      "metadata_tag": "doc1_5",
+      "text": "Being estranged from her husband, Shelly Sterling said she would \"have to accept\" whatever punishment the NBA handed down to him, but that her stake in the team should be separate."
+    },
+    "counterpart": {
+      "metadata_tag": "doc0_5",
+      "text": "Sterling also said that she \"eventually\" will divorce her husband, and that she hadn't yet done so due to financial considerations."
+    },
+    "aux": [
+      {
+        "metadata_tag": "doc1_6",
+        "text": "\"I was shocked by what he said. And -- well, I guess whatever their decision is -- we have to live with it,\" she said. \"But I don't know why I should be punished for what his actions were.\""
       },
       {
-        "metadata_tag": "doc1_17",
-        "text": "But Shelly Sterling<PERSON_2> said \"Eventually, Shelly Sterling<PERSON_2> is going to.\""
-      },
-      {
-        "metadata_tag": "doc1_19",
-        "text": "Since Donald Sterling's<PERSON_6> ban, several celebrities have said several celebrities would be willing to buy the team from Sterling<ORG_7>, including Oprah Winfrey<PERSON_10> and Magic Johnson<PERSON_9>. Sterling remains the owner, though her estranged husband, Donald Sterling's<PERSON_6> ban means her estranged husband, Donald Sterling<PERSON_1> can have nothing to do with running the team and can't attend any games."
-      },
-      {
-        "metadata_tag": "doc1_21",
-        "text": "ABC News<ORG_6> contacted Donald Sterling<PERSON_1> for comment on her estranged husband, Donald Sterling's<PERSON_6> wife's interview, but her estranged husband, Donald Sterling<PERSON_1> declined."
+        "metadata_tag": "doc1_8",
+        "text": "\"Under the NBA Constitution, if a controlling owner's interest is terminated by a 3/4 vote, all other team owners' interests are automatically terminated as well,\" NBA spokesman Mike Bass said. \"It doesn't matter whether the owners are related as is the case here. These are the rules to which all NBA owners agreed to as a condition of owning their team.\""
       }
     ]
   }

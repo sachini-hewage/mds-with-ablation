@@ -2,6 +2,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import maximum_bipartite_matching
 
+
 class PairingClusterer:
     """
     Cluster paragraphs across multiple documents using global best-match assignment.
@@ -22,15 +23,18 @@ class PairingClusterer:
         6. Return pairs with metadata for base, counterpart, and auxiliary paragraphs.
     """
 
-    def __init__(self, docs):
+    def __init__(self, docs, original_lookup=None):
         """
         Initialize the PairingClusterer.
 
         Args:
             docs (list): List of documents, each with a `paragraphs` attribute.
                          Each paragraph must have `embedding`, `doc_id`, `para_id`, and `text`.
+            original_lookup (dict, optional): Mapping from "docid_paraid" → original paragraph text
+                                              (from baseline data). If None, uses current text.
         """
         self.docs = docs
+        self.original_lookup = original_lookup or {}
 
     def pair(self):
         """
@@ -44,21 +48,20 @@ class PairingClusterer:
                     "aux": list of dicts for auxiliary paragraphs
                 }
         """
-        # Select base document (I choose the longest one)
+        # --- Step 1: Select base document (longest one) ---
         base_doc = max(self.docs, key=lambda d: len(d.paragraphs))
         other_docs = [d for d in self.docs if d != base_doc]
 
         base_paras = base_doc.paragraphs
         non_base_paras = [p for doc in other_docs for p in doc.paragraphs]
 
-        # Compute similarity matrix
+        # --- Step 2: Compute cosine similarity matrix ---
         sim_matrix = np.zeros((len(base_paras), len(non_base_paras)))
         for i, b in enumerate(base_paras):
             for j, nb in enumerate(non_base_paras):
                 sim_matrix[i, j] = self._cosine_sim(b.embedding, nb.embedding)
 
-        # Finds the best one-to-one matches between base and non-base paragraphs using
-        # bipartite matching
+        # --- Step 3: Perform bipartite matching for global best matches ---
         graph = csr_matrix(sim_matrix)
         match = maximum_bipartite_matching(graph, perm_type='column')
 
@@ -66,7 +69,7 @@ class PairingClusterer:
         matched_bases = set()
         matched_non_bases = set()
 
-        # Assign counterparts according to global best-match
+        # --- Step 4: Assign matched pairs ---
         for j, i in enumerate(match):
             if i != -1:
                 base_para = base_paras[i]
@@ -74,35 +77,29 @@ class PairingClusterer:
                 matched_bases.add(i)
                 matched_non_bases.add(j)
 
+                base_tag = f"{base_para.doc_id}_{base_para.para_id}"
+                counterpart_tag = f"{counterpart.doc_id}_{counterpart.para_id}"
+
                 pairs.append({
                     "base": {
                         "doc_id": base_para.doc_id,
                         "para_id": base_para.para_id,
-                        "metadata_tag": f"{base_para.doc_id}_{base_para.para_id}",
-                        "text": base_para.text
+                        "metadata_tag": base_tag,
+                        "text": self._get_original_text(base_tag, base_para.text)
                     },
                     "counterpart": {
-                        "metadata_tag": f"{counterpart.doc_id}_{counterpart.para_id}",
-                        "text": counterpart.text
+                        "metadata_tag": counterpart_tag,
+                        "text": self._get_original_text(counterpart_tag, counterpart.text)
                     },
-                    "aux": []  # initialize empty auxiliary list
+                    "aux": []
                 })
 
-        # Collect leftover paragraphs
-        leftovers = []
+        # --- Step 5: Collect unmatched paragraphs ---
+        leftovers = [p for j, p in enumerate(non_base_paras) if j not in matched_non_bases]
+        leftovers += [p for i, p in enumerate(base_paras) if i not in matched_bases]
 
-        # Unmatched non-base paragraphs
-        for j, para in enumerate(non_base_paras):
-            if j not in matched_non_bases:
-                leftovers.append(para)
-
-        # Unmatched base paragraphs
-        for i, para in enumerate(base_paras):
-            if i not in matched_bases:
-                leftovers.append(para)
-
-        # Attach each leftover to the closest base with a counterpart
-        base_with_counterpart_indices = [pairs.index(p) for p in pairs if p["counterpart"] is not None]
+        # --- Step 6: Attach leftovers to closest matched base paragraph ---
+        base_with_counterpart_indices = list(range(len(pairs)))
 
         for para in leftovers:
             best_idx = None
@@ -114,23 +111,25 @@ class PairingClusterer:
                     best_score = sim
                     best_idx = idx
 
-            # Attach leftover paragraph as auxiliary
+            tag = f"{para.doc_id}_{para.para_id}"
             pairs[best_idx]["aux"].append({
-                "metadata_tag": f"{para.doc_id}_{para.para_id}",
-                "text": para.text
+                "metadata_tag": tag,
+                "text": self._get_original_text(tag, para.text)
             })
 
         return pairs
 
+    def _get_original_text(self, tag, fallback_text):
+        """
+        Replace paragraph text with baseline/original version if available.
+        """
+        return self.original_lookup.get(tag, fallback_text)
+
     def _cosine_sim(self, a, b):
         """
-        Compute cosine similarity between two vectors.
-
-        Args:
-            a (np.ndarray): Vector a.
-            b (np.ndarray): Vector b.
-
-        Returns:
-            float: Cosine similarity between a and b.
+        Compute cosine similarity between two vectors safely.
         """
-        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+        denom = np.linalg.norm(a) * np.linalg.norm(b)
+        if denom == 0:
+            return 0.0
+        return float(np.dot(a, b) / denom)
