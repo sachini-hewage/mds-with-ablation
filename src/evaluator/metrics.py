@@ -145,6 +145,27 @@ class SummaryEvaluator:
         }
         return coverage, details
 
+    def overlap_metric(self, summary_sents, threshold=0.5):
+        """Compute proportion of redundant sentences in summary based on cosine similarity."""
+        if len(summary_sents) < 2:
+            return 0.0
+
+        embeds = self.embedder.encode(summary_sents, convert_to_tensor=True)
+        sim_matrix = util.cos_sim(embeds, embeds)
+
+        redundant_pairs = 0
+        total_pairs = 0
+        n = len(summary_sents)
+
+        # Compare each pair of sentences (i < j)
+        for i in range(n):
+            for j in range(i + 1, n):
+                total_pairs += 1
+                if sim_matrix[i][j] > threshold:
+                    redundant_pairs += 1
+
+        return redundant_pairs / total_pairs if total_pairs > 0 else 0.0
+
 
 
     # def coverage_metric(self, source_sents, summary_sents, return_details=True):
@@ -216,27 +237,6 @@ class SummaryEvaluator:
     #
     #     return recall_score, details
 
-    def overlap_metric(self, summary_sents, threshold=0.5):
-        """Compute proportion of redundant sentences in summary based on cosine similarity."""
-        if len(summary_sents) < 2:
-            return 0.0
-
-        embeds = self.embedder.encode(summary_sents, convert_to_tensor=True)
-        sim_matrix = util.cos_sim(embeds, embeds)
-
-        redundant_pairs = 0
-        total_pairs = 0
-        n = len(summary_sents)
-
-        # Compare each pair of sentences (i < j)
-        for i in range(n):
-            for j in range(i + 1, n):
-                total_pairs += 1
-                if sim_matrix[i][j] > threshold:
-                    redundant_pairs += 1
-
-        return redundant_pairs / total_pairs if total_pairs > 0 else 0.0
-
     def named_entity_retention_metric(self, source_text, summary_text):
         """
         Compute the percentage of unique PERSON entities from source retained in summary.
@@ -279,8 +279,9 @@ class SummaryEvaluator:
         print("Source PERSON entities:", src_persons)
         print("Summary PERSON entities:", sum_persons)
 
+        # If no PERSON entities in source, consider fully retained
         if not src_persons:
-            return 0.0
+            return 1.0
 
         src_tokens = {s: tokens(s) for s in src_persons}
         sum_tokens = {s: tokens(s) for s in sum_persons}
@@ -297,7 +298,6 @@ class SummaryEvaluator:
                         break
 
         return retained / len(src_persons)
-
 
     # Evaluation Loop
 
@@ -368,6 +368,3 @@ class SummaryEvaluator:
         print(f"CSV results saved to: {csv_path}")
 
 
-# if __name__ == "__main__":
-#     evaluator = SummaryEvaluator()
-#     evaluator.evaluate_all()

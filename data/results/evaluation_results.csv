@@ -1,4 +1,0 @@
-ablation_type,method,coverage,overlap,importance_retention
-baseline,summary_sentence_clusters,0.800000011920929,0.0606,0.5
-baseline,summary_paragraph_clusters,0.0,0.0,0.0
-baseline,summary_pairing,0.8666666746139526,0.0833,0.5

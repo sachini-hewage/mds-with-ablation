@@ -1,34 +1,163 @@
+# import numpy as np
+# import hdbscan
+#
+#
+# class HDBSCANParagraphClusterer:
+#     """
+#     Cluster paragraph embeddings using HDBSCAN with a cosine distance metric,
+#     while restoring paragraph text from a baseline/original lookup if available.
+#
+#     Steps:
+#         1. Flatten all paragraphs from all documents into a single list of paragraphs
+#            and corresponding embeddings.
+#         2. Normalize embeddings to unit vectors.
+#         3. Compute the pairwise cosine distance matrix.
+#         4. Perform HDBSCAN clustering using the precomputed distance matrix.
+#         5. Organize paragraphs into clusters, preserving metadata (doc_id, para_id, text).
+#         6. Compute the centroid (mean embedding) for each cluster.
+#         7. Assign outliers to the closest cluster center using cosine similarity.
+#         8. Return a list of clusters with cluster IDs and associated paragraphs.
+#     """
+#
+#     def __init__(self, docs, original_lookup=None, min_cluster_size=2, min_samples=1):
+#         """
+#         Initialize the clusterer.
+#
+#         Args:
+#             docs (list): List of documents, each with a `paragraphs` attribute.
+#                          Each paragraph must have `embedding`, `doc_id`, `para_id`, and `text`.
+#             original_lookup (dict, optional): Mapping from "docid_paraid" → original paragraph text.
+#             min_cluster_size (int): Minimum size of a cluster. Passed to HDBSCAN.
+#             min_samples (int): Minimum samples parameter for HDBSCAN.
+#         """
+#         self.docs = docs
+#         self.original_lookup = original_lookup or {}
+#         self.min_cluster_size = min_cluster_size
+#         self.min_samples = min_samples
+#
+#     def cluster(self):
+#         """
+#         Perform clustering on paragraph embeddings and assign outliers to the closest cluster.
+#
+#         Returns:
+#             list: List of clusters, where each cluster is a dict:
+#                 {
+#                     "cluster_id": int,
+#                     "paragraphs": list of dicts with "metadata_tag" and "text"
+#                 }
+#         """
+#         # Flatten paragraphs and collect embeddings
+#         paragraphs = []
+#         embeddings = []
+#         for doc in self.docs:
+#             for para in doc.paragraphs:
+#                 if para.embedding is not None:
+#                     paragraphs.append(para)
+#                     embeddings.append(para.embedding)
+#
+#         if len(embeddings) == 0:
+#             return []
+#
+#         embeddings = np.array(embeddings, dtype=np.float64)
+#
+#         # --- Step 2: Normalize embeddings ---
+#         norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+#         embeddings = embeddings / np.maximum(norms, 1e-10)
+#
+#         # --- Step 3: Compute cosine distance matrix ---
+#         distance_matrix = 1 - np.dot(embeddings, embeddings.T)
+#         distance_matrix = distance_matrix.astype(np.float64)
+#
+#         # --- Step 4: HDBSCAN clustering with precomputed distance ---
+#         clusterer = hdbscan.HDBSCAN(
+#             min_cluster_size=self.min_cluster_size,
+#             min_samples=self.min_samples,
+#             metric='precomputed'
+#         )
+#         labels = clusterer.fit_predict(distance_matrix)
+#
+#         # --- Step 5: Organize clusters ---
+#         clusters = {}
+#         for idx, label in enumerate(labels):
+#             para = paragraphs[idx]
+#             tag = f"{para.doc_id}_{para.para_id}"
+#             text = self._get_original_text(tag, para.text)
+#
+#             if label == -1:
+#                 continue  # Handle outliers later
+#
+#             if label not in clusters:
+#                 clusters[label] = {"center": None, "paragraphs": []}
+#
+#             clusters[label]["paragraphs"].append({
+#                 "metadata_tag": tag,
+#                 "text": text
+#             })
+#
+#         # --- Step 6: Compute cluster centers ---
+#         for label, cluster in clusters.items():
+#             cluster_embs = np.array(
+#                 [paragraphs[idx].embedding for idx, lbl in enumerate(labels) if lbl == label],
+#                 dtype=np.float64
+#             )
+#             cluster["center"] = np.mean(cluster_embs, axis=0)
+#
+#         # --- Step 7: Assign outliers ---
+#         for idx, label in enumerate(labels):
+#             if label != -1:
+#                 continue
+#             para = paragraphs[idx]
+#             tag = f"{para.doc_id}_{para.para_id}"
+#             text = self._get_original_text(tag, para.text)
+#
+#             best_label = None
+#             best_sim = -1
+#             for lbl, cluster in clusters.items():
+#                 sim = self._cosine_sim(para.embedding, cluster["center"])
+#                 if sim > best_sim:
+#                     best_sim = sim
+#                     best_label = lbl
+#
+#             if best_label is not None:
+#                 clusters[best_label]["paragraphs"].append({
+#                     "metadata_tag": tag,
+#                     "text": text
+#                 })
+#
+#         # --- Step 8: Convert to list format ---
+#         result = []
+#         for lbl, cluster in clusters.items():
+#             result.append({
+#                 "cluster_id": int(lbl),
+#                 "paragraphs": cluster["paragraphs"]
+#             })
+#
+#         return result
+#
+#     def _cosine_sim(self, a, b):
+#         """Compute cosine similarity between two vectors."""
+#         return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
+#
+#     def _get_original_text(self, tag, fallback_text):
+#         """Retrieve original paragraph text from lookup if available."""
+#         return self.original_lookup.get(tag, fallback_text)
+
+
 import numpy as np
 import hdbscan
 
-
 class HDBSCANParagraphClusterer:
     """
-    Cluster paragraph embeddings using HDBSCAN with a cosine distance metric,
-    while restoring paragraph text from a baseline/original lookup if available.
-
-    Steps:
-        1. Flatten all paragraphs from all documents into a single list of paragraphs
-           and corresponding embeddings.
-        2. Normalize embeddings to unit vectors.
-        3. Compute the pairwise cosine distance matrix.
-        4. Perform HDBSCAN clustering using the precomputed distance matrix.
-        5. Organize paragraphs into clusters, preserving metadata (doc_id, para_id, text).
-        6. Compute the centroid (mean embedding) for each cluster.
-        7. Assign outliers to the closest cluster center using cosine similarity.
-        8. Return a list of clusters with cluster IDs and associated paragraphs.
+    Cluster paragraph embeddings using HDBSCAN and leave outliers as cluster -1.
     """
 
     def __init__(self, docs, original_lookup=None, min_cluster_size=2, min_samples=1):
         """
-        Initialize the clusterer.
-
         Args:
-            docs (list): List of documents, each with a `paragraphs` attribute.
-                         Each paragraph must have `embedding`, `doc_id`, `para_id`, and `text`.
-            original_lookup (dict, optional): Mapping from "docid_paraid" → original paragraph text.
-            min_cluster_size (int): Minimum size of a cluster. Passed to HDBSCAN.
-            min_samples (int): Minimum samples parameter for HDBSCAN.
+            docs (list): List of Document objects, each containing paragraphs with embeddings.
+            original_lookup (dict): Optional mapping "docid_paraid" -> original paragraph text.
+            min_cluster_size (int): HDBSCAN parameter.
+            min_samples (int): HDBSCAN parameter.
         """
         self.docs = docs
         self.original_lookup = original_lookup or {}
@@ -37,16 +166,11 @@ class HDBSCANParagraphClusterer:
 
     def cluster(self):
         """
-        Perform clustering on paragraph embeddings and assign outliers to the closest cluster.
-
+        Cluster paragraphs and leave outliers as cluster -1.
         Returns:
-            list: List of clusters, where each cluster is a dict:
-                {
-                    "cluster_id": int,
-                    "paragraphs": list of dicts with "metadata_tag" and "text"
-                }
+            list: clusters with cluster_id and paragraph list.
         """
-        # Flatten paragraphs and collect embeddings
+        # Flatten paragraphs and embeddings
         paragraphs = []
         embeddings = []
         for doc in self.docs:
@@ -55,20 +179,16 @@ class HDBSCANParagraphClusterer:
                     paragraphs.append(para)
                     embeddings.append(para.embedding)
 
-        if len(embeddings) == 0:
+        if not embeddings:
             return []
 
         embeddings = np.array(embeddings, dtype=np.float64)
+        embeddings /= np.maximum(np.linalg.norm(embeddings, axis=1, keepdims=True), 1e-10)
 
-        # --- Step 2: Normalize embeddings ---
-        norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
-        embeddings = embeddings / np.maximum(norms, 1e-10)
-
-        # --- Step 3: Compute cosine distance matrix ---
+        # Cosine distance matrix
         distance_matrix = 1 - np.dot(embeddings, embeddings.T)
-        distance_matrix = distance_matrix.astype(np.float64)
 
-        # --- Step 4: HDBSCAN clustering with precomputed distance ---
+        # HDBSCAN clustering
         clusterer = hdbscan.HDBSCAN(
             min_cluster_size=self.min_cluster_size,
             min_samples=self.min_samples,
@@ -76,68 +196,32 @@ class HDBSCANParagraphClusterer:
         )
         labels = clusterer.fit_predict(distance_matrix)
 
-        # --- Step 5: Organize clusters ---
+        # Organize paragraphs into clusters
         clusters = {}
         for idx, label in enumerate(labels):
             para = paragraphs[idx]
             tag = f"{para.doc_id}_{para.para_id}"
             text = self._get_original_text(tag, para.text)
 
-            if label == -1:
-                continue  # Handle outliers later
-
             if label not in clusters:
-                clusters[label] = {"center": None, "paragraphs": []}
+                clusters[label] = {"paragraphs": []}
 
             clusters[label]["paragraphs"].append({
                 "metadata_tag": tag,
                 "text": text
             })
 
-        # --- Step 6: Compute cluster centers ---
-        for label, cluster in clusters.items():
-            cluster_embs = np.array(
-                [paragraphs[idx].embedding for idx, lbl in enumerate(labels) if lbl == label],
-                dtype=np.float64
-            )
-            cluster["center"] = np.mean(cluster_embs, axis=0)
-
-        # --- Step 7: Assign outliers ---
-        for idx, label in enumerate(labels):
-            if label != -1:
-                continue
-            para = paragraphs[idx]
-            tag = f"{para.doc_id}_{para.para_id}"
-            text = self._get_original_text(tag, para.text)
-
-            best_label = None
-            best_sim = -1
-            for lbl, cluster in clusters.items():
-                sim = self._cosine_sim(para.embedding, cluster["center"])
-                if sim > best_sim:
-                    best_sim = sim
-                    best_label = lbl
-
-            if best_label is not None:
-                clusters[best_label]["paragraphs"].append({
-                    "metadata_tag": tag,
-                    "text": text
-                })
-
-        # --- Step 8: Convert to list format ---
+        # Relabel -1 to a consistent unique cluster id if needed
+        # e.g., leave as -1 to indicate unique/unclustered paragraphs
         result = []
         for lbl, cluster in clusters.items():
             result.append({
-                "cluster_id": int(lbl),
+                "cluster_id": int(lbl),  # keep -1 as is
                 "paragraphs": cluster["paragraphs"]
             })
 
         return result
 
-    def _cosine_sim(self, a, b):
-        """Compute cosine similarity between two vectors."""
-        return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
-
     def _get_original_text(self, tag, fallback_text):
-        """Retrieve original paragraph text from lookup if available."""
+        """Return original paragraph text from lookup if available."""
         return self.original_lookup.get(tag, fallback_text)
