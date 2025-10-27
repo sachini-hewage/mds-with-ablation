@@ -1,23 +1,23 @@
 ablation_modes:
   - baseline
-  - coref
-  - coref+ner
+#  - coref
+#  - coref+ner
 
 # ==========================
 # Paths
 # ==========================
 data:
-  processed_dir: "data/processed"              # where preprocessed JSONL files live
-  embeddings_dir: "data/embeddings"            # where to cache embeddings
-  results_dir: "data/pairing_results"         # where to save pairing outputs
-  sentence_clusters_dir: "data/sentence_clusters"  # HDBSCAN or agglomerative sentence clusters
+  processed_dir: "data/processed"                 # where preprocessed JSONL files live
+  embeddings_dir: "data/embeddings"               # where to cache embeddings
+  results_dir: "data/pairing_results"            # where to save pairing outputs
+  sentence_clusters_dir: "data/sentence_clusters" # HDBSCAN or agglomerative sentence clusters
   paragraph_clusters_dir: "data/paragraph_clusters" # HDBSCAN or agglomerative paragraph clusters
 
 # ==========================
 # Embedding settings
 # ==========================
 embedding:
-  model: "sentence-transformers/all-mpnet-base-v2"  # larger, better semantic embeddings
+  model: "sentence-transformers/all-mpnet-base-v2" # larger, better semantic embeddings
   batch_size: 16
   normalize: true                                  # normalize for cosine similarity
 
@@ -25,56 +25,27 @@ embedding:
 # Pairing approach
 # ==========================
 pairing:
-  similarity_metric: "cosine"                      # cosine or dot
-  top_k_aux: 100                                   # attach up to 100 auxiliary paragraphs
-  cache: true                                      # whether to cache embeddings to disk
+  similarity_metric: "cosine"                     # cosine or dot
+  top_k_aux: 100                                  # attach up to 100 auxiliary paragraphs
+  cache: true                                     # whether to cache embeddings to disk
 
 # ==========================
 # HDBSCAN sentence clustering
 # ==========================
 sentence_clustering:
   enabled: true
-  method: "hdbscan"                                # clustering method: hdbscan or agglomerative
+  method: "hdbscan"                               # clustering method: hdbscan or agglomerative
   min_cluster_size: 2
   min_samples: 1
-  metric: "precomputed"                            # cosine distance will be precomputed
-  normalize_embeddings: true                        # normalize embeddings for cosine
+  metric: "precomputed"                           # cosine distance will be precomputed
+  normalize_embeddings: true                      # normalize embeddings for cosine
 
 # ==========================
 # HDBSCAN paragraph clustering
 # ==========================
 paragraph_clustering:
   enabled: true
-  method: "hdbscan"                                # clustering method: hdbscan or agglomerative
+  method: "hdbscan"                               # clustering method: hdbscan or agglomerative
   min_cluster_size: 2
   min_samples: 1
-  metric: "precomputed"                            # cosine distance will be precomputed
-  normalize_embeddings: true                        # normalize embeddings for cosine
-
-# ==========================
-# Agglomerative clustering (optional)
-# ==========================
-agglomerative:
-  sentence:
-    enabled: true
-    n_clusters: null                                # number of clusters; null = determine automatically
-    metric: "cosine"                              # cosine distance
-    linkage: "average"                              # linkage strategy: average, complete, single
-  paragraph:
-    enabled: true
-    n_clusters: null
-    metric: "cosine"
-    linkage: "average"
-
-
-# ==========================
-# Summarisation settings
-# ==========================
-summarisation:
-    enabled: true
-    ollama_model: "qwen3:14b"               # Ollama model ===TO DO
-    temperature: 0.0
-    output_dir: "data/summaries"
-    overwrite_existing: true         # (optional) overwrite summaries if they exist
-    think: false                # (optional) disable model reasoning output if supported
-    prompt_style: "concise"
+  metric: "precomputed"                           # cosine distance will be used as a precomputed measure

@@ -2,31 +2,73 @@
 # Prompt Templates for LLM Summarisation
 # ========================================
 
+
+# INDIVIDUAL_SUMMARY_TEMPLATE = """
+# You are a coverage-focused summariser. Summarise the following document into a single,
+# coherent paragraph that captures all facts, relationships, and context. Focus on including everything.
+# Retain all named entities and quotes as-is.
+# Return only the summary paragraph.
+#
+#
+# Document:
+# """.strip()
+
+INDIVIDUAL_SUMMARY_TEMPLATE ="""
+
+Convert all direct quotes in the following text into reported/indirect speech. 
+Do not use quotation marks. Write it as a coherent narrative summary while keeping all key information.
+Keep the sentences short and coherent. 
+
+For example:
+
+Direct speech:
+"Wel, you see, I was shocked by what he said," she said. "But I don't know why I should be punished for his actions."
+
+Reported speech:
+She said she was shocked by what he said and did not understand why she should be punished for his actions.
+
+Now convert the following text:
+
+Text:
+{document_text}
+
+Converted summary:
+
+
+"""
+
 PAIRING_TEMPLATE = f""" 
 
 ### Your Task
 You are given a set of text groupings. 
-Each group contains one base paragraph, one counterpart paragraph, and several aux paragraphs. Your goal is to produce a **comprehensive and factual merged summary** that maintains **high content coverage**. 
+Each cluster may include a base sentence, a counterpart sentence, and several auxiliary sentences.
+Some clusters may represent leftover sentences that did not strongly match any base; treat these as a single pseudo-cluster.
 
 ### Instructions 
 
 1. **Read Carefully:** 
     - First, extract all distinct facts, claims, and key entities from the base, counterpart, and all aux paragraphs.
     - Identify overlaps and merge equivalent information, but do **not** drop unique facts unless they are trivial or completely redundant. 
+    
+2. **Pseudo-Clusters Handling:**  
+    - If a cluster is marked `"pseudo": True`, treat **each sentence in its aux paragraphs as completely independent information**. 
+    - Each sentence in a pseudo cluster should be fully represented in the summary.
 
-2. **Generate the Summary:** 
+
+3. **Generate the Summary:** 
     - Write in **clear, small sentences**, ideally one fact per sentence. 
     - **Start from the base paragraph**, ensuring all of its main information is preserved. 
     - Then **enrich** it with **complementary or additional facts** from the counterpart and aux paragraphs.
+    - Include all details from pseudo cluster. 
     - Include any quotes as-is. 
     - Retain all named entities.  
 
-3. **Metadata Annotation:** 
+4. **Metadata Annotation:** 
     - After every factual statement, annotate all source paragraph IDs supporting that fact in brackets. 
     - Use the format [docid_paraid,docid_paraid,...]. 
     - Even if a fact comes from only one paragraph, include it as [docid_paraid]. 
 
-4. **Output Style:** 
+5. **Output Style:** 
     - Write a **single cohesive paragraph** of concise factual sentences. 
     - Avoid lists, bullet points, or meta-commentary. 
     - Return ONLY the summary with inline ID arrays. 
@@ -44,6 +86,7 @@ The Mars rover successfully collected its first rock samples from the Jezero Cra
 
 SENTENCE_CLUSTER_TEMPLATE = """
 You are given clusters of semantically similar sentences extracted from multiple documents. 
+
 
 ### Your Task
 
@@ -84,7 +127,7 @@ Produce a **comprehensive, factual, and concise merged summary** that preserves 
 
 The United Nations approved a new climate accord committing member nations to reduce carbon emissions by 40% by 2035 [doc1_3_0,doc4_2_1]. Several developing countries emphasized the need for financial support to transition to clean energy [doc1_4_0,doc3_1_2]. The agreement builds on the Paris Accords, introducing stricter accountability mechanisms for emissions tracking [doc2_5_0,doc4_2_3].
 
-**Key Reminder:** Coverage is the top priority. Include every distinct, factual, and meaningful point from the cluster.
+**Key Reminder:** Coverage is the top priority. Include every distinct, factual, and meaningful point from the cluster. 
 """
 
 # -------------------------------------------------------------

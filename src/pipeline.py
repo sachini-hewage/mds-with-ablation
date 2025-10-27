@@ -1,5 +1,5 @@
 # pipeline.py
-import os
+
 import json
 from pathlib import Path
 from src.utils.preprocessing_utils import preprocess_first_instance
@@ -10,6 +10,11 @@ from src.clusterer.hdbscan_paragraph_clusterer import HDBSCANParagraphClusterer
 from src.summariser.summariser import Summariser
 from src.utils.metadata_utils import Document, Paragraph, Sentence
 from src.evaluator.metrics import SummaryEvaluator
+from sentence_transformers import SentenceTransformer
+
+
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
+
 
 
 class Pipeline:
@@ -53,11 +58,11 @@ class Pipeline:
         ablation_modes = self.config.get("ablation_modes", ["baseline", "coref", "coref+ner"])
         print("=== Starting MDS Pipeline ===")
 
-        # --- Ensure baseline is preprocessed first for original text lookup ---
+        # Ensure baseline is preprocessed first for original text lookup
         baseline_preprocessed = False
         if "baseline" in ablation_modes:
             print("\n[Step 0] Preprocessing baseline mode first (required for original text lookup)")
-            preprocess_first_instance(mode="baseline")
+            preprocess_first_instance(mode="baseline", embedder=embedder)
             baseline_preprocessed = True
 
         # Load baseline/original lookup once
@@ -220,6 +225,6 @@ class Pipeline:
                 summary = self.summarizer.summarize(data, method)
                 with open(output_file, "w", encoding="utf-8") as f:
                     f.write(summary)
-                print(f"      ✓ Saved {method} summary to {output_file}")
+                print(f"Saved {method} summary to {output_file}")
             except Exception as e:
                 print(f"Skipped {method} summarisation due to error: {e}")

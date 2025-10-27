@@ -1,47 +1,17 @@
 {
     "baseline_summary_sentence_clusters": {
-        "coverage": 0.760869562625885,
-        "overlap": 0.3333,
-        "importance_retention": 0.8
-    },
-    "baseline_summary_paragraph_clusters": {
-        "coverage": 0.760869562625885,
-        "overlap": 0.197,
-        "importance_retention": 0.6
-    },
-    "baseline_summary_pairing": {
-        "coverage": 0.6739130616188049,
-        "overlap": 0.2182,
-        "importance_retention": 0.6
-    },
-    "coref+ner_summary_sentence_clusters": {
-        "coverage": 0.6086956262588501,
-        "overlap": 0.303,
-        "importance_retention": 0.8
-    },
-    "coref+ner_summary_paragraph_clusters": {
-        "coverage": 0.739130437374115,
-        "overlap": 0.2051,
-        "importance_retention": 0.6
-    },
-    "coref+ner_summary_pairing": {
-        "coverage": 0.717391312122345,
-        "overlap": 0.2088,
-        "importance_retention": 0.6
-    },
-    "coref_summary_sentence_clusters": {
-        "coverage": 0.6739130616188049,
-        "overlap": 0.4182,
+        "coverage": 0.800000011920929,
+        "overlap": 0.0606,
         "importance_retention": 0.5
     },
-    "coref_summary_paragraph_clusters": {
-        "coverage": 0.695652186870575,
-        "overlap": 0.197,
-        "importance_retention": 0.7
+    "baseline_summary_paragraph_clusters": {
+        "coverage": 0.0,
+        "overlap": 0.0,
+        "importance_retention": 0.0
     },
-    "coref_summary_pairing": {
-        "coverage": 0.695652186870575,
-        "overlap": 0.303,
-        "importance_retention": 0.6
+    "baseline_summary_pairing": {
+        "coverage": 0.8666666746139526,
+        "overlap": 0.0833,
+        "importance_retention": 0.5
     }
 }

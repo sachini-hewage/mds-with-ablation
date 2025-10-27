@@ -5,6 +5,7 @@ import csv
 from pathlib import Path
 from sentence_transformers import SentenceTransformer, util
 import spacy
+from bert_score import score as bert_score
 
 
 class SummaryEvaluator:
@@ -143,6 +144,77 @@ class SummaryEvaluator:
             ],
         }
         return coverage, details
+
+
+
+    # def coverage_metric(self, source_sents, summary_sents, return_details=True):
+    #     """
+    #     Coverage metric (semantic version using BERTScore Recall):
+    #     Measures how much of the source content is represented in the summary,
+    #     using deep contextual similarity instead of simple cosine thresholds.
+    #
+    #     A high recall score means the summary captures most of the semantic
+    #     information from the source sentences even if rephrased.
+    #
+    #     Args:
+    #         source_sents (list[str]): List of source sentences.
+    #         summary_sents (list[str]): List of summary sentences.
+    #         return_details (bool): If True, return detailed per-sentence recall contributions.
+    #
+    #     Returns:
+    #         float or (float, dict):
+    #             - If return_details=False: returns overall BERTScore Recall (float).
+    #             - If return_details=True: returns (recall_score, details_dict),
+    #               where details include per-sentence recall estimates.
+    #     """
+    #     # Handle empty input safely
+    #     if not source_sents or not summary_sents:
+    #         return (0.0, {}) if return_details else 0.0
+    #
+    #     candidate_text = " ".join(summary_sents)
+    #     reference_text = " ".join(source_sents)
+    #
+    #     # Use a stronger model
+    #     model_type = "microsoft/deberta-xlarge-mnli"  # stronger than default roberta-large
+    #
+    #     # Compute BERTScore Recall
+    #     P, R, F1 = bert_score(
+    #         cands=[candidate_text],
+    #         refs=[reference_text],
+    #         model_type=model_type,
+    #         lang="en",
+    #         rescale_with_baseline=True
+    #     )
+    #
+    #     recall_score = float(R.mean().item())
+    #
+    #     if not return_details:
+    #         return recall_score
+    #
+    #     # Sentence-level breakdown
+    #     details = {
+    #         "metric": "BERTScore Recall",
+    #         "model": model_type,
+    #         "overall_recall": recall_score,
+    #         "sentence_breakdown": []
+    #     }
+    #
+    #     for src in source_sents:
+    #         _, R_sent, _ = bert_score(
+    #             cands=[candidate_text],
+    #             refs=[src],
+    #             model_type=model_type,
+    #             lang="en",
+    #             rescale_with_baseline=True
+    #         )
+    #         r_val = float(R_sent.mean().item())
+    #         details["sentence_breakdown"].append({
+    #             "source_sentence": src,
+    #             "approx_recall": r_val,
+    #             "is_covered": r_val >= 0.4  # adjustable heuristic
+    #         })
+    #
+    #     return recall_score, details
 
     def overlap_metric(self, summary_sents, threshold=0.5):
         """Compute proportion of redundant sentences in summary based on cosine similarity."""

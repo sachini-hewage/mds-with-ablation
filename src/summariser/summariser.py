@@ -3,6 +3,7 @@ import subprocess
 from pathlib import Path
 
 from src.summariser.prompt_templates import (
+    INDIVIDUAL_SUMMARY_TEMPLATE,
     PAIRING_TEMPLATE,
     SENTENCE_CLUSTER_TEMPLATE,
     PARAGRAPH_CLUSTER_TEMPLATE,
@@ -38,13 +39,26 @@ class Summariser:
 
         Args:
             data (dict/list): Input data to summarize (e.g., paired paragraphs, clustered sentences, etc.)
-            method (str): Summarization method: "pairing", "sentence_clustering", or "paragraph_clustering"
+            method (str): Summarization method: "individual", "pairing", "sentence_clustering", or "paragraph_clustering"
 
         Returns:
             str: Generated summary from the Ollama model
         """
         # Select template based on method
-        if method == "pairing":
+        if method == "individual":
+            template = INDIVIDUAL_SUMMARY_TEMPLATE
+            # Handle both string or list input (for batch documents)
+            if isinstance(data, list):
+                summaries = []
+                for i, text in enumerate(data):
+                    print(f"[Summariser] Summarizing individual document {i + 1}/{len(data)}")
+                    input_text = f"{template}\n\n{text}\n\nSummary:"
+                    summaries.append(self.call_llm(input_text))
+                return summaries  # list of summaries
+            else:
+                input_text = f"{template}\n\n{data}\n\nSummary:"
+                return self.call_llm(input_text)
+        elif method == "pairing":
             template = PAIRING_TEMPLATE
         elif method == "sentence_clustering":
             template = SENTENCE_CLUSTER_TEMPLATE
