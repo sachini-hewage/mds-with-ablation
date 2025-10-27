@@ -211,8 +211,7 @@ class HDBSCANParagraphClusterer:
                 "text": text
             })
 
-        # Relabel -1 to a consistent unique cluster id if needed
-        # e.g., leave as -1 to indicate unique/unclustered paragraphs
+        # Leave as -1 to indicate unique paragraphs
         result = []
         for lbl, cluster in clusters.items():
             result.append({

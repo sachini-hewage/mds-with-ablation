@@ -1,5 +1,4 @@
 from typing import List, Tuple
-
 from spacy.tokens import Doc, Span
 
 

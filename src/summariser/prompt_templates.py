@@ -3,15 +3,7 @@
 # ========================================
 
 
-# INDIVIDUAL_SUMMARY_TEMPLATE = """
-# You are a coverage-focused summariser. Summarise the following document into a single,
-# coherent paragraph that captures all facts, relationships, and context. Focus on including everything.
-# Retain all named entities and quotes as-is.
-# Return only the summary paragraph.
-#
-#
-# Document:
-# """.strip()
+
 
 INDIVIDUAL_SUMMARY_TEMPLATE ="""
 
@@ -22,7 +14,7 @@ Keep the sentences short and coherent.
 For example:
 
 Direct speech:
-"Wel, you see, I was shocked by what he said," she said. "But I don't know why I should be punished for his actions."
+"Well, you see, I was shocked by what he said," she said. "But I don't know why I should be punished for his actions."
 
 Reported speech:
 She said she was shocked by what he said and did not understand why she should be punished for his actions.

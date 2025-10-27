@@ -1,10 +1,4 @@
-try:
-    from fastcoref import LingMessCoref
-except ImportError:
-    raise ImportError(
-        "fastcoref is not installed. Install it via `pip install fastcoref`."
-    )
-
+from fastcoref import LingMessCoref
 from src.coref.coreference_flow import coreference
 
 class CoreferenceResolver:

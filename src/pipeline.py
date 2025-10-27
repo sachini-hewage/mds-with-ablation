@@ -29,15 +29,18 @@ class Pipeline:
     Multi-document summarisation (MDS) pipeline orchestrator.
 
     Steps per ablation mode:
-      0. Base preprocessing (clean ads, split paragraphs, etc.)
-      1. Apply ablation-specific processing (coref, NER)
-      2. Postprocessing (similarity filtering + golden summary)
+      0. Base preprocessing (clean ads, split paragraphs)- These are ablation-level agnostic.
+      1. Apply ablation-specific processing (coref, coref+ NER)
+      2. Postprocessing
+      (filtering out extremely different sentences (those are advertisements with a high probability)
+      + golden summary generation from concatenating original sources and replacing quotes with reported speech.)
       3. Embed paragraphs and sentences
       4. Pair paragraphs across documents
       5. HDBSCAN sentence clustering
       6. HDBSCAN paragraph clustering
       7. Summarisation via Ollama LLM
       8. Evaluation
+      9. Writing results to a persistent .json file for iterative summary generation for multiple instances
     """
 
     def __init__(self, config: dict):

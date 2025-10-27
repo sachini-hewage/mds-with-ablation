@@ -5,7 +5,7 @@ import csv
 from pathlib import Path
 from sentence_transformers import SentenceTransformer, util
 import spacy
-from bert_score import score as bert_score
+# from bert_score import score as bert_score
 
 
 class SummaryEvaluator:
@@ -145,7 +145,7 @@ class SummaryEvaluator:
         }
         return coverage, details
 
-    def overlap_metric(self, summary_sents, threshold=0.5):
+    def overlap_metric(self, summary_sents, threshold=0.6):
         """Compute proportion of redundant sentences in summary based on cosine similarity."""
         if len(summary_sents) < 2:
             return 0.0
@@ -299,8 +299,9 @@ class SummaryEvaluator:
 
         return retained / len(src_persons)
 
-    # Evaluation Loop
 
+
+    # Evaluation Loop
     def evaluate_summary_file(self, ablation_name, summary_path, source_sents, source_text):
         """Evaluate one summary file and store metrics."""
         with open(summary_path, "r", encoding="utf-8") as f:
