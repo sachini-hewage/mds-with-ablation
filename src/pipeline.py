@@ -16,6 +16,7 @@ from src.clusterer.hdbscan_sentence_clusterer import HDBSCANSentenceClusterer
 from src.clusterer.hdbscan_paragraph_clusterer import HDBSCANParagraphClusterer
 from src.summariser.summariser import Summariser
 from src.utils.metadata_utils import Document, Paragraph, Sentence
+from src.redundancy_reducer.mmr_utils import MMRReducer
 from src.evaluator.metrics import SummaryEvaluator
 
 
@@ -170,15 +171,33 @@ class Pipeline:
                 mode, summaries_dir, pairing_file, sentence_clusters_file, paragraph_clusters_file
             )
 
-        # Step 9: Evaluation
-        print("\n[Step 9] Evaluating all summaries")
+        # # Step 9: Apply MMR redundancy reduction to summaries for each mode
+        # print("\n[Step 9] Reducing redundancy in generated summaries (MMR)")
+        #
+        # try:
+        #     mmr_reducer = MMRReducer(model_name="all-MiniLM-L6-v2", lambda_param=0.8)
+        #     for mode in ablation_modes:
+        #         summaries_dir = Path(f"data/processed/{mode}/summaries")
+        #         if not summaries_dir.exists():
+        #             print(f" Skipping MMR for mode={mode} — summaries directory not found.")
+        #             continue
+        #
+        #         print(f" Applying MMR redundancy reduction in {summaries_dir} ...")
+        #         mmr_reducer.reduce_in_directory(summaries_dir)
+        #
+        #     print("Redundancy reduction completed for all ablation modes.")
+        # except Exception as e:
+        #     print(f" MMR reduction step failed: {e}")
+
+        # Step 10: Evaluation
+        print("\n[Step 10] Evaluating all summaries")
         try:
             self.evaluator.evaluate_all()
         except Exception as e:
             print(f" Evaluation failed: {e}")
 
-        # Step 10: Write results to persistent output file
-        print("\n[Step 10] Writing evaluation results")
+        # Step 11: Write results to persistent output file
+        print("\n[Step 11] Writing evaluation results")
 
         # Load per-run results from evaluator (currently at data/results/evaluation_results.json)
         per_run_results_path = Path("data/results/evaluation_results.json")
@@ -198,9 +217,6 @@ class Pipeline:
         self._append_results_to_json(run_results, ALL_RESULTS_PATH, instance_id)
 
         print("\n=== Pipeline finished successfully ===")
-
-
-
 
 
 

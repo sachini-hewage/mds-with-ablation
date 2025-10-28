@@ -8,6 +8,7 @@ from src.ner.ner_tagger import NERTagger
 from src.coref.corefernce_resolver import CoreferenceResolver
 from sentence_transformers import util
 from src.summariser.summariser import Summariser
+from src.redundancy_reducer.mmr_utils import MMRReducer
 
 
 
@@ -191,18 +192,19 @@ def apply_ablation_processing(
 
 
 # POSTPROCESSING (ablation-independent)
-
 def postprocess_instance_outputs(
     raw_texts,
     results_dir: Path,
     embedder=None,
-    dissimilar_thresh: float = 0.3
+    dissimilar_thresh: float = 0.3,
+    mmr_lambda: float = 0.8,
+    mmr_threshold: float = 0.1
 ):
     """
     Performs postprocessing on the original documents (not ablation-specific):
     - Similarity filtering
     - Sentence collection
-    - Golden summary generation
+    - Golden summary generation with MMR redundancy reduction
     """
     results_dir.mkdir(parents=True, exist_ok=True)
     combined_sentences_file = results_dir / "combined_source_sentences.txt"
@@ -210,15 +212,13 @@ def postprocess_instance_outputs(
     summariser = Summariser(model="qwen3:8b")
     nlp = spacy.load("en_core_web_sm")
 
-    # Step 1: Generate document-level summaries
+    # Generate document-level summaries
     doc_summaries = []
-    print(f"[Postprocessing] Generating golden summaries...")
-    for i, doc_text in enumerate(raw_texts):
-        print(f"[Postprocessing] Summarizing doc {i+1}/{len(raw_texts)}")
+    for doc_text in raw_texts:
         summary = summariser.summarize(doc_text, method="individual")
         doc_summaries.append(summary)
 
-    # Step 2: Filter dissimilar summary sentences
+    # Collect sentences and filter by dissimilarity
     all_summary_sentences = []
     for doc_summary in doc_summaries:
         doc = nlp(doc_summary)
@@ -230,16 +230,24 @@ def postprocess_instance_outputs(
             sim_matrix.fill_diagonal_(0)
             max_sim_to_others = sim_matrix.max(dim=1).values
 
-            for sent_text, max_sim in zip(summary_sents, max_sim_to_others):
-                if max_sim >= dissimilar_thresh:
-                    all_summary_sentences.append(sent_text)
-                else:
-                    print(f"[DEBUG] Skipped dissimilar: {sent_text}")
+            all_summary_sentences.extend(
+                sent for sent, max_sim in zip(summary_sents, max_sim_to_others)
+                if max_sim >= dissimilar_thresh
+            )
         else:
             all_summary_sentences.extend(summary_sents)
 
+    # # Apply MMR redundancy reduction
+    # if all_summary_sentences:
+    #     mmr_reducer = MMRReducer(lambda_param=mmr_lambda, mmr_threshold=mmr_threshold)
+    #     joined_text = '. '.join(all_summary_sentences) + '.'
+    #     reduced_text = mmr_reducer.reduce_summary(joined_text)
+    #     all_summary_sentences = [s.strip() for s in reduced_text.split('.') if s.strip()]
+
+    # Save to file
     with combined_sentences_file.open("w", encoding="utf-8") as cf:
         cf.write("\n".join(all_summary_sentences))
 
-    print(f"[Postprocessing] Saved {len(all_summary_sentences)} summary sentences → {combined_sentences_file}")
+    print(f"[Postprocessing] Saved {len(all_summary_sentences)} MMR-reduced summary sentences → {combined_sentences_file}")
     return combined_sentences_file
+

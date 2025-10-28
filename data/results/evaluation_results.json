@@ -1,22 +1,17 @@
-[
-  {
-    "instance_id": 1,
-    "results": {
-      "baseline_summary_sentence_clusters": {
+{
+    "baseline_summary_sentence_clusters": {
         "coverage": 0.9047619104385376,
         "overlap": 0.1636,
         "importance_retention": 0.8571
-      },
-      "baseline_summary_paragraph_clusters": {
+    },
+    "baseline_summary_paragraph_clusters": {
         "coverage": 1.0,
         "overlap": 0.0222,
         "importance_retention": 0.5714
-      },
-      "baseline_summary_pairing": {
+    },
+    "baseline_summary_pairing": {
         "coverage": 0.9523809552192688,
         "overlap": 0.0758,
         "importance_retention": 0.8571
-      }
     }
-  }
-]
+}

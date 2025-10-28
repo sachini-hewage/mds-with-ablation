@@ -71,7 +71,7 @@ The Mars rover successfully collected its first rock samples from the Jezero Cra
 
 --- 
 
-**Key Reminder:** Coverage matters most. include every meaningful, distinct fact from the base, counterpart, and aux paragraphs.
+**Key Reminder:** Coverage matters most. include every meaningful, distinct fact from the base, counterpart, and aux paragraphs.Return only the summary as a paragraph.
 """
 
 # -------------------------------------------------------------
@@ -119,7 +119,7 @@ Produce a **comprehensive, factual, and concise merged summary** that preserves 
 
 The United Nations approved a new climate accord committing member nations to reduce carbon emissions by 40% by 2035 [doc1_3_0,doc4_2_1]. Several developing countries emphasized the need for financial support to transition to clean energy [doc1_4_0,doc3_1_2]. The agreement builds on the Paris Accords, introducing stricter accountability mechanisms for emissions tracking [doc2_5_0,doc4_2_3].
 
-**Key Reminder:** Coverage is the top priority. Include every distinct, factual, and meaningful point from the cluster. 
+**Key Reminder:** Coverage is the top priority. Include every distinct, factual, and meaningful point from the cluster. Return only the summary as a paragraph. 
 """
 
 # -------------------------------------------------------------
@@ -163,5 +163,5 @@ Produce a **comprehensive, factual, and concise merged summary** that preserves 
 
 Scientists have discovered a new exoplanet orbiting within the habitable zone of a nearby star located approximately 12 light-years from Earth [doc1_6,doc3_2]. The planet, slightly larger than Earth, could sustain liquid water under suitable atmospheric conditions [doc1_6,doc4_1]. Astronomers plan follow-up observations with the James Webb Space Telescope to study its atmospheric composition [doc2_7,doc3_2,doc4_1].
 
-**Key Reminder:** Coverage is the highest priority. Every distinct, meaningful fact from the cluster must appear in the summary.
+**Key Reminder:** Coverage is the highest priority. Every distinct, meaningful fact from the cluster must appear in the summary.Return only the summary as a paragraph.
 """
