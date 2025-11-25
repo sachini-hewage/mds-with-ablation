@@ -141,18 +141,18 @@ class Pipeline:
                 continue
 
             # # Step 5: Paragraph Pairing
-            # print(f"\n[Step 5] Running paragraph pairing for mode={mode}")
+            print(f"\n[Step 5] Running paragraph pairing for mode={mode}")
             original_lookup = self._load_original_lookup()
-            # clusterer = PairingClusterer(docs, original_lookup=original_lookup)
-            # try:
-            #     pairs = clusterer.pair()
-            # except Exception as e:
-            #     print(f" Pairing failed for mode={mode}: {e}. Skipping this mode.")
-            #     continue
-            #
-            # with open(pairing_file, "w", encoding="utf-8") as f:
-            #     json.dump(pairs, f, indent=2, ensure_ascii=False)
-            # print(f" Saved paragraph pairs to {pairing_file}")
+            clusterer = PairingClusterer(docs, original_lookup=original_lookup)
+            try:
+                pairs = clusterer.pair()
+            except Exception as e:
+                print(f" Pairing failed for mode={mode}: {e}. Skipping this mode.")
+                continue
+
+            with open(pairing_file, "w", encoding="utf-8") as f:
+                json.dump(pairs, f, indent=2, ensure_ascii=False)
+            print(f" Saved paragraph pairs to {pairing_file}")
 
             # Step 6: HDBSCAN Sentence Clustering
             print(f"\n[Step 6] Running HDBSCAN sentence clustering for mode={mode}")
@@ -166,17 +166,17 @@ class Pipeline:
                 print(f" Sentence clustering failed for mode={mode}: {e}. Skipping this step.")
 
             # Step 7: HDBSCAN Paragraph Clustering
-            # print(f"\n[Step 7] Running HDBSCAN paragraph clustering for mode={mode}")
-            # try:
-            #     hdb_para_clusterer = HDBSCANParagraphClusterer(docs, original_lookup=original_lookup)
-            #     paragraph_clusters = hdb_para_clusterer.cluster()
-            #     with open(paragraph_clusters_file, "w", encoding="utf-8") as f:
-            #         json.dump(paragraph_clusters, f, indent=2, ensure_ascii=False)
-            #     print(f" Saved paragraph clusters to {paragraph_clusters_file}")
-            # except Exception as e:
-            #     print(f" Paragraph clustering failed for mode={mode}: {e}. Skipping this step.")
+            print(f"\n[Step 7] Running HDBSCAN paragraph clustering for mode={mode}")
+            try:
+                hdb_para_clusterer = HDBSCANParagraphClusterer(docs, original_lookup=original_lookup)
+                paragraph_clusters = hdb_para_clusterer.cluster()
+                with open(paragraph_clusters_file, "w", encoding="utf-8") as f:
+                    json.dump(paragraph_clusters, f, indent=2, ensure_ascii=False)
+                print(f" Saved paragraph clusters to {paragraph_clusters_file}")
+            except Exception as e:
+                print(f" Paragraph clustering failed for mode={mode}: {e}. Skipping this step.")
 
-            # Step 8: Summarisation
+            Step 8: Summarisation
             print(f"\n[Step 8] Generating summaries for mode={mode}")
             self._generate_summaries(
                 mode, summaries_dir, pairing_file, sentence_clusters_file, paragraph_clusters_file
