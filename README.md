@@ -33,13 +33,14 @@ This repository contains a **multi-document summarisation (MDS) pipeline** desig
 ## Installation
 
 1. Clone the repository:
-git clone https://github.com/yourusername/multi-doc-summariser.git
-cd multi-doc-summariser
+git clone https://github.com/sachini-hewage/multi-source-document-summariser.git
+cd multi-source-document-summariser
 
-2. Install dependancies:
+3. Install dependancies:
 pip install -r requirements.txt
 
 Requirements include sentence-transformers, hdbscan, scikit-learn, jsonlines, and your LLM integration (Ollama).
 Ensure dataset files exist in data/multinews_100_instances.json. Preprocessed outputs will be saved in data/processed/ and evaluation results in data/results/.
+
 
 
