@@ -1,7 +1,7 @@
 # pipeline.py
 import json
 from pathlib import Path
-from datasets import load_dataset
+#from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
 
 # Imports for modular preprocessing
@@ -71,9 +71,19 @@ class Pipeline:
         ablation_modes = self.config.get("ablation_modes", ["baseline", "coref", "coref+ner"])
         print(f"=== Starting MDS Pipeline for instance {instance_id} ===")
 
-        # Load only the required instance
-        dataset = load_dataset("multi_news", split=f"train[{instance_id}:{instance_id + 1}]")
-        instance = dataset[0]
+        # # Load only the required instance
+        # dataset = load_dataset("multi_news", split=f"train[{instance_id}:{instance_id + 1}]")
+        # instance = dataset[0]
+
+        # Load only the required instance from preselected JSON
+        json_path = Path("data/multinews_100_instances.json")
+        with open(json_path, "r", encoding="utf-8") as f:
+            all_instances = json.load(f)
+
+        if instance_id < 0 or instance_id >= len(all_instances):
+            raise IndexError(f"instance_id {instance_id} out of range (0-{len(all_instances) - 1})")
+
+        instance = all_instances[instance_id]
 
         # Step 0: Base preprocessing (common for all)
         print("\n[Step 0] Base preprocessing (ablation-independent)")
@@ -85,6 +95,7 @@ class Pipeline:
 
         # Step 1: Postprocessing for similarity filtering & golden summary
         print("\n[Step 1] Generating golden summary and performing similarity filtering")
+        print(raw_texts)
         postprocess_instance_outputs(
             raw_texts,
             results_dir=Path("data/results"),
@@ -129,19 +140,19 @@ class Pipeline:
                 print(f" Embedding failed for mode={mode}: {e}. Skipping this mode.")
                 continue
 
-            # Step 5: Paragraph Pairing
-            print(f"\n[Step 5] Running paragraph pairing for mode={mode}")
+            # # Step 5: Paragraph Pairing
+            # print(f"\n[Step 5] Running paragraph pairing for mode={mode}")
             original_lookup = self._load_original_lookup()
-            clusterer = PairingClusterer(docs, original_lookup=original_lookup)
-            try:
-                pairs = clusterer.pair()
-            except Exception as e:
-                print(f" Pairing failed for mode={mode}: {e}. Skipping this mode.")
-                continue
-
-            with open(pairing_file, "w", encoding="utf-8") as f:
-                json.dump(pairs, f, indent=2, ensure_ascii=False)
-            print(f" Saved paragraph pairs to {pairing_file}")
+            # clusterer = PairingClusterer(docs, original_lookup=original_lookup)
+            # try:
+            #     pairs = clusterer.pair()
+            # except Exception as e:
+            #     print(f" Pairing failed for mode={mode}: {e}. Skipping this mode.")
+            #     continue
+            #
+            # with open(pairing_file, "w", encoding="utf-8") as f:
+            #     json.dump(pairs, f, indent=2, ensure_ascii=False)
+            # print(f" Saved paragraph pairs to {pairing_file}")
 
             # Step 6: HDBSCAN Sentence Clustering
             print(f"\n[Step 6] Running HDBSCAN sentence clustering for mode={mode}")
@@ -155,15 +166,15 @@ class Pipeline:
                 print(f" Sentence clustering failed for mode={mode}: {e}. Skipping this step.")
 
             # Step 7: HDBSCAN Paragraph Clustering
-            print(f"\n[Step 7] Running HDBSCAN paragraph clustering for mode={mode}")
-            try:
-                hdb_para_clusterer = HDBSCANParagraphClusterer(docs, original_lookup=original_lookup)
-                paragraph_clusters = hdb_para_clusterer.cluster()
-                with open(paragraph_clusters_file, "w", encoding="utf-8") as f:
-                    json.dump(paragraph_clusters, f, indent=2, ensure_ascii=False)
-                print(f" Saved paragraph clusters to {paragraph_clusters_file}")
-            except Exception as e:
-                print(f" Paragraph clustering failed for mode={mode}: {e}. Skipping this step.")
+            # print(f"\n[Step 7] Running HDBSCAN paragraph clustering for mode={mode}")
+            # try:
+            #     hdb_para_clusterer = HDBSCANParagraphClusterer(docs, original_lookup=original_lookup)
+            #     paragraph_clusters = hdb_para_clusterer.cluster()
+            #     with open(paragraph_clusters_file, "w", encoding="utf-8") as f:
+            #         json.dump(paragraph_clusters, f, indent=2, ensure_ascii=False)
+            #     print(f" Saved paragraph clusters to {paragraph_clusters_file}")
+            # except Exception as e:
+            #     print(f" Paragraph clustering failed for mode={mode}: {e}. Skipping this step.")
 
             # Step 8: Summarisation
             print(f"\n[Step 8] Generating summaries for mode={mode}")

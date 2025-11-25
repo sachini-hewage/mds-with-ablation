@@ -21,8 +21,11 @@ AD_PATTERNS = [
     r"(?i)Read more.*",
     r"(?i)Follow us on.*",
     r"(?i)©.*",
-    r"(?i)Read:.*"
+    r"(?i)Read:.*",
+    r"(?i)Archive",
+    r"(?i)404"
 ]
+
 
 
 def clean_advertisements(text: str) -> str:
@@ -192,6 +195,7 @@ def apply_ablation_processing(
 
 
 # POSTPROCESSING (ablation-independent)
+# POSTPROCESSING (ablation-independent)
 def postprocess_instance_outputs(
     raw_texts,
     results_dir: Path,
@@ -202,19 +206,28 @@ def postprocess_instance_outputs(
 ):
     """
     Performs postprocessing on the original documents (not ablation-specific):
+    - Advertisement removal
     - Similarity filtering
     - Sentence collection
     - Golden summary generation with MMR redundancy reduction
     """
+
     results_dir.mkdir(parents=True, exist_ok=True)
     combined_sentences_file = results_dir / "combined_source_sentences.txt"
 
     summariser = Summariser(model="qwen3:8b")
     nlp = spacy.load("en_core_web_sm")
 
-    # Generate document-level summaries
+    # Step 0: Clean advertisements from all raw texts
+    cleaned_texts = [clean_advertisements(doc_text) for doc_text in raw_texts if clean_advertisements(doc_text).strip()]
+
+    if not cleaned_texts:
+        print("[Postprocessing] No text left after ad removal. Skipping.")
+        return combined_sentences_file
+
+    # Convert direct speech to reported  reported speech
     doc_summaries = []
-    for doc_text in raw_texts:
+    for doc_text in cleaned_texts:
         summary = summariser.summarize(doc_text, method="individual")
         doc_summaries.append(summary)
 
@@ -248,6 +261,7 @@ def postprocess_instance_outputs(
     with combined_sentences_file.open("w", encoding="utf-8") as cf:
         cf.write("\n".join(all_summary_sentences))
 
-    print(f"[Postprocessing] Saved {len(all_summary_sentences)} MMR-reduced summary sentences → {combined_sentences_file}")
+    print(f"[Postprocessing] Saved {len(all_summary_sentences)} sentences to {combined_sentences_file}")
     return combined_sentences_file
+
 

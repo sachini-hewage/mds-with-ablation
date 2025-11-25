@@ -1,0 +1,566 @@
+[
+  {
+    "cluster_id": 24,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_0_0",
+        "text": "I love reading books on art."
+      },
+      {
+        "metadata_tag": "doc0_0_4",
+        "text": "Thankfully I was lucky enough to stumble into the world of art books on my own, and I believe I’m a better artist for it."
+      },
+      {
+        "metadata_tag": "doc0_3_1",
+        "text": "Robert Henri’s The Art Spirit is a classic."
+      },
+      {
+        "metadata_tag": "doc0_7_4",
+        "text": "I don’t think any other book has been able to instill quite the passion for painting that this book exudes."
+      }
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_0_1",
+        "text": "Not just the kind with pretty pictures, either."
+      },
+      {
+        "metadata_tag": "doc0_0_2",
+        "text": "But the kind with words."
+      }
+    ]
+  },
+  {
+    "cluster_id": -1,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_0_3",
+        "text": "It baffles me how few of my classes during art school actually had required texts."
+      },
+      {
+        "metadata_tag": "doc0_1_0",
+        "text": "Here are ten books that I sincerely believe every artist out there should purchase and read—at least once."
+      },
+      {
+        "metadata_tag": "doc0_2_0",
+        "text": "Art & Fear If you’ve ever started to have thoughts in your head about “am I talented enough?” or “why do I bother making art?”"
+      },
+      {
+        "metadata_tag": "doc0_2_3",
+        "text": "Art & Fear’s a quick read and very enjoyable."
+      },
+      {
+        "metadata_tag": "doc0_2_4",
+        "text": "I don’t think any book will get you back to your easel faster than this one."
+      },
+      {
+        "metadata_tag": "doc0_3_0",
+        "text": "The Art Spirit Sometimes I read too many books on technique, so I like to balance it out with some theory and emotion."
+      },
+      {
+        "metadata_tag": "doc0_4_0",
+        "text": "How Pictures Work Work’s small, simple, and entirely profound."
+      },
+      {
+        "metadata_tag": "doc0_4_1",
+        "text": "In my opinion the single best book on composition available."
+      },
+      {
+        "metadata_tag": "doc0_4_2",
+        "text": "The illustrations are all made with cut paper, so all frills are left aside, leaving only pure design and composition."
+      },
+      {
+        "metadata_tag": "doc0_4_3",
+        "text": "Molly Bang uses a number of comparison pictures to show you how design actually works."
+      },
+      {
+        "metadata_tag": "doc0_4_4",
+        "text": "You can probably sit down and read Work in one go, but you’ll find yourself returning to Work time and time again."
+      },
+      {
+        "metadata_tag": "doc0_5_0",
+        "text": "Imaginative Realism"
+      },
+      {
+        "metadata_tag": "doc0_5_3",
+        "text": "James Gurney writes clearly and to the point."
+      },
+      {
+        "metadata_tag": "doc0_5_4",
+        "text": "No matter what sort of art you want to do, I think you’ll find something pertinent in here."
+      },
+      {
+        "metadata_tag": "doc0_7_1",
+        "text": "A small bite-sized book with tons of little nuggets of wisdom."
+      },
+      {
+        "metadata_tag": "doc0_9_2",
+        "text": "The more advanced readers can find some equally useful techniques as well."
+      },
+      {
+        "metadata_tag": "doc1_0_0",
+        "text": "I’ve had it."
+      },
+      {
+        "metadata_tag": "doc1_2_2",
+        "text": "I’m not some flaky, disgruntled art graduate, either."
+      },
+      {
+        "metadata_tag": "doc1_2_3",
+        "text": "I have a quite successful career, thankyouverymuch."
+      },
+      {
+        "metadata_tag": "doc1_3_3",
+        "text": "As way of comparison, the cost of a diploma from Harvard Law School is a mere $236,100."
+      },
+      {
+        "metadata_tag": "doc1_4_2",
+        "text": "That any art school should deceive any art school's students into believing that this is a smart decision is cruel and unusual."
+      },
+      {
+        "metadata_tag": "doc1_5_3",
+        "text": "Even comfortable salaries."
+      },
+      {
+        "metadata_tag": "doc1_8_2",
+        "text": "Think long and hard whether you’re willing to pay student loan companies $3000 every single month for the next 10 years."
+      },
+      {
+        "metadata_tag": "doc1_10_1",
+        "text": "Not once have I needed my diploma to get a job."
+      },
+      {
+        "metadata_tag": "doc1_10_2",
+        "text": "Nobody cares."
+      },
+      {
+        "metadata_tag": "doc1_10_4",
+        "text": "The work that you produce should be your sole concern."
+      },
+      {
+        "metadata_tag": "doc1_14_3",
+        "text": "You can get a year of access to all of the Gnomon Workshop’s videos for the cost of a few days at the average art school."
+      },
+      {
+        "metadata_tag": "doc1_15_2",
+        "text": "I’ve come up with a plan for you."
+      },
+      {
+        "metadata_tag": "doc1_18_0",
+        "text": "Moving forward"
+      },
+      {
+        "metadata_tag": "doc1_19_0",
+        "text": "There has never been a better time to be an artist."
+      },
+      {
+        "metadata_tag": "doc1_20_0",
+        "text": "But I encourage all aspiring artists to think long and hard about all aspiring artists's options."
+      },
+      {
+        "metadata_tag": "doc1_21_0",
+        "text": "Find another path."
+      },
+      {
+        "metadata_tag": "doc1_21_1",
+        "text": "Art is a wonderful, beautiful, fulfilling pursuit."
+      }
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_2_1",
+        "text": "then you need to read this book."
+      },
+      {
+        "metadata_tag": "doc0_2_2",
+        "text": "You also need to read this book if you haven’t had those thoughts yet."
+      }
+    ]
+  },
+  {
+    "cluster_id": 25,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_3_2",
+        "text": "You won’t find out the “best way to draw anime” in this book, but you might just discover why you’re making art in the first place."
+      },
+      {
+        "metadata_tag": "doc0_5_1",
+        "text": "Though this might, at first glance, seem to lean heavily towards the genre illustrators in our midst, this book is great for artists of all types."
+      }
+    ]
+  },
+  {
+    "cluster_id": 22,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_5_2",
+        "text": "James Gurney is a phenomenal painter and an equally fantastic teacher."
+      },
+      {
+        "metadata_tag": "doc0_6_3",
+        "text": "James Gurney balances the scientific understanding with artistic flare in the most eloquent way possible."
+      }
+    ]
+  },
+  {
+    "cluster_id": 23,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_6_0",
+        "text": "Color and Light Color and Light is James Gurney’s second book, and Color and Light’s easily as good as the first."
+      },
+      {
+        "metadata_tag": "doc0_6_1",
+        "text": "I’ve done quite a lot of searching for good books on color and light and didn’t find anything useful enough to recommend… until Color and Light."
+      },
+      {
+        "metadata_tag": "doc0_6_2",
+        "text": "James Gurney has done extensive research into how light and color work in the real world and how it applies to art."
+      },
+      {
+        "metadata_tag": "doc0_6_4",
+        "text": "And while I’m on the subject let me recommend these two DVDs put out by Gnomon: The Mechanics of Color and Practical Light and Color."
+      },
+      {
+        "metadata_tag": "doc0_6_5",
+        "text": "these two DVDs put out by Gnomon: The Mechanics of Color and Practical Light and Color helped me enormously when it came to learning color theory."
+      }
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_7_0",
+        "text": "Hawthorne on Painting Short & sweet."
+      },
+      {
+        "metadata_tag": "doc0_7_2",
+        "text": "Hawthorne on Painting can be a little off-putting in Hawthorne on Painting's format (mostly transcribed critiques of images, but without the images), but Hawthorne on Painting’s worth it."
+      },
+      {
+        "metadata_tag": "doc0_7_3",
+        "text": "Some people also find Hawthorne on Painting a little wishy-washy and not solidly academic enough, but I find Hawthorne on Painting completely refreshing and hopeful."
+      }
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_8_0",
+        "text": "Alla Prima Written by one of the most influential living artists, Alla Prima is an essential tome of observational painting."
+      },
+      {
+        "metadata_tag": "doc0_8_3",
+        "text": "Alla Prima’s the priciest book on this list, but Alla Prima’s worth every penny."
+      }
+    ]
+  },
+  {
+    "cluster_id": 21,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_8_1",
+        "text": "Richard Schmid can, at times, come across as all-knowing to some people, but Richard Schmid does so with a fair bit of justification."
+      },
+      {
+        "metadata_tag": "doc0_8_2",
+        "text": "Richard Schmid's own skills at painting are incredible and Richard Schmid does a remarkably good job at putting everything into words."
+      }
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_9_0",
+        "text": "Oil Painting Techniques and Materials Oil Painting Techniques and Materials can feel a little dated at times—like when Harold Speed talks about the “new brush” known as a “filbert”—but Oil Painting Techniques and Materials’s a timeless book."
+      },
+      {
+        "metadata_tag": "doc0_9_1",
+        "text": "Anyone starting out painting and looking for guidance should pick Oil Painting Techniques and Materials up."
+      }
+    ]
+  },
+  {
+    "cluster_id": 26,
+    "sentences": [
+      {
+        "metadata_tag": "doc0_10_0",
+        "text": "The Practice and Science of Drawing Also written by Harold Speed, The Practice and Science of Drawing is a classic drawing book."
+      },
+      {
+        "metadata_tag": "doc0_10_1",
+        "text": "The Practice and Science of Drawing covers design as well, but all through the lens of drawing."
+      },
+      {
+        "metadata_tag": "doc0_10_2",
+        "text": "Since drawing is the basis for all that we artists do, it makes sense to do a little reading on the subject."
+      }
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_1_0",
+        "text": "I will no longer encourage aspiring artists to attend art school."
+      },
+      {
+        "metadata_tag": "doc1_1_2",
+        "text": "Unless you’re given a full ride scholarship (or have parents with money to burn), attending art school is a waste of your money."
+      },
+      {
+        "metadata_tag": "doc1_10_0",
+        "text": "You don’t have to go to college to be an artist."
+      }
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_1_1",
+        "text": "I just won’t do it."
+      },
+      {
+        "metadata_tag": "doc1_6_0",
+        "text": "Don’t do it."
+      }
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_2_0",
+        "text": "I have a diploma from the best public art school in the nation."
+      },
+      {
+        "metadata_tag": "doc1_2_1",
+        "text": "Prior to the best public art school in the nation I attended the best private art school in the nation."
+      },
+      {
+        "metadata_tag": "doc1_17_2",
+        "text": "You’ve received more quality, focused education than I think you’ll find at any art school."
+      }
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_3_0",
+        "text": "But I am saddened and ashamed at art schools and art schools's blatant exploitation of students."
+      },
+      {
+        "metadata_tag": "doc1_3_1",
+        "text": "Graduates are woefully ill-prepared for the realities of being professional artists and racked with obscene amounts of debt."
+      }
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_3_2",
+        "text": "By Graduates's own estimation, the cost of a four year education at RISD is $245,816."
+      },
+      {
+        "metadata_tag": "doc1_5_6",
+        "text": "An online debt repayment calculator recommended a salary exceeding $400,000 in order to pay off a RISD education within 10 years."
+      },
+      {
+        "metadata_tag": "doc1_17_1",
+        "text": "For less than a quarter of the tuition for RISD you’ve got yourself a killer education."
+      }
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_4_0",
+        "text": "This is embarrassing."
+      },
+      {
+        "metadata_tag": "doc1_4_1",
+        "text": "It’s downright shameful."
+      }
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_5_0",
+        "text": "Artists are neither doctors nor lawyers."
+      },
+      {
+        "metadata_tag": "doc1_5_1",
+        "text": "Artists do not, on average, make huge six-figure salaries."
+      },
+      {
+        "metadata_tag": "doc1_5_2",
+        "text": "Artists can make livable salaries, certainly."
+      },
+      {
+        "metadata_tag": "doc1_5_4",
+        "text": "But Artists ain’t usually making a quarter mil a year."
+      }
+    ]
+  },
+  {
+    "cluster_id": 0,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_5_5",
+        "text": "Hate to break it to you."
+      },
+      {
+        "metadata_tag": "doc1_15_1",
+        "text": "So you know what?"
+      }
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_7_0",
+        "text": "Don’t start your career with debilitating debt."
+      },
+      {
+        "metadata_tag": "doc1_20_1",
+        "text": "Student loans are unforgivable through bankruptcy and can wreck your financial future."
+      },
+      {
+        "metadata_tag": "doc1_20_2",
+        "text": "Establishing a career while under the unceasing brutality of student loans makes an already difficult task nearly impossible."
+      },
+      {
+        "metadata_tag": "doc1_21_2",
+        "text": "Don’t ruin Art with a mountain of debt."
+      }
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_8_0",
+        "text": "Please."
+      },
+      {
+        "metadata_tag": "doc1_8_1",
+        "text": "I beg you."
+      },
+      {
+        "metadata_tag": "doc1_17_0",
+        "text": "There."
+      }
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_9_0",
+        "text": "You’ve got other options."
+      },
+      {
+        "metadata_tag": "doc1_13_0",
+        "text": "And then there are the online options."
+      },
+      {
+        "metadata_tag": "doc1_15_0",
+        "text": "With all of these options it can be a little daunting."
+      }
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_10_3",
+        "text": "The education is all that matters."
+      },
+      {
+        "metadata_tag": "doc1_11_0",
+        "text": "There are excellent atelier schools all over the world that offer superior education for a mere fraction of the price."
+      },
+      {
+        "metadata_tag": "doc1_12_2",
+        "text": "And none of excellent atelier schools all over the world that offer superior education for a mere fraction of the price will cost nearly as much as a traditional four year school."
+      }
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_11_1",
+        "text": "Here are a few:"
+      },
+      {
+        "metadata_tag": "doc1_15_3",
+        "text": "Do this:"
+      }
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_12_0",
+        "text": "There are more."
+      },
+      {
+        "metadata_tag": "doc1_12_1",
+        "text": "Many, many more."
+      }
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_13_1",
+        "text": "The availability of drawing and painting resources is incredible."
+      },
+      {
+        "metadata_tag": "doc1_14_0",
+        "text": "Sitting at a computer I have direct access to artists all over the world."
+      },
+      {
+        "metadata_tag": "doc1_14_1",
+        "text": "I have the combined wisdom of the artistic community to pull from at my leisure."
+      },
+      {
+        "metadata_tag": "doc1_19_1",
+        "text": "I’m inspired by the sheer quantity and quality of internet resources available to artists."
+      }
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "sentences": [
+      {
+        "metadata_tag": "doc1_14_2",
+        "text": "For less than a few grand a year I can view more educational material than I would see at any art school."
+      },
+      {
+        "metadata_tag": "doc1_16_0",
+        "text": "The $10k Ultimate Art Education"
+      }
+    ]
+  }
+]

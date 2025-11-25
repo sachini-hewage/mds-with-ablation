@@ -1,6 +1,6 @@
 ablation_modes:
-  - baseline
-#  - coref
+#  - baseline
+ - coref
 #  - coref+ner
 
 # ==========================

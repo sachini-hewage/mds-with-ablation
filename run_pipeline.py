@@ -33,13 +33,13 @@ if __name__ == "__main__":
     pipeline = Pipeline(config)
 
     # Run for first 10 instances
-    for instance_id in range(1, 2):
+    for instance_id in range(27, 28):
         print(f"\n=== Running pipeline for instance {instance_id} ===")
 
         # Run pipeline for current instance
         pipeline.run(instance_id)
 
-        # # Clean up data folder after each run
+        # Clean up data folder after each run
         # for folder in [processed_dir, results_dir]:
         #     if folder.exists():
         #         shutil.rmtree(folder)
